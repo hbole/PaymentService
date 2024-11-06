@@ -17,7 +17,7 @@ public class RazorpayPaymentGateway implements IPaymentGateway {
 
     @Override
     public String getPaymentLink(
-            Double amount,
+            Long amount,
             Long orderId,
             String name,
             String phoneNumber
@@ -29,11 +29,11 @@ public class RazorpayPaymentGateway implements IPaymentGateway {
             paymentLinkRequest.put("accept_partial",true);
             paymentLinkRequest.put("first_min_partial_amount",100);
             paymentLinkRequest.put("expire_by", 1730885199);
-            paymentLinkRequest.put("reference_id", orderId);
+            paymentLinkRequest.put("reference_id", orderId.toString());
             paymentLinkRequest.put("description","Payment for policy no #23456");
             JSONObject customer = new JSONObject();
-            customer.put("name", name);
-            customer.put("contact", phoneNumber);
+            customer.put("name", phoneNumber);
+            customer.put("contact", name);
             customer.put("email","gaurav.kumar@example.com");
             paymentLinkRequest.put("customer",customer);
             JSONObject notify = new JSONObject();

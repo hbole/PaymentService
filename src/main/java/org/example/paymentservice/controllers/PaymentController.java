@@ -22,7 +22,8 @@ public class PaymentController {
                 initiatePaymentDTO.getAmount(),
                 initiatePaymentDTO.getOrderId(),
                 initiatePaymentDTO.getName(),
-                initiatePaymentDTO.getPhoneNumber()
+                initiatePaymentDTO.getPhoneNumber(),
+                initiatePaymentDTO.getPaymentGatewayType()
         );
 
         return new ResponseEntity<>(paymentLink, HttpStatus.CREATED);
